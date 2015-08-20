@@ -3,7 +3,7 @@ var Queue = function(){
   // but try not not reference your old code in writing the new style.
 
   var someInstance = {
-    storage: {};
+    storage: {}
   }; 
   
   _.extend(someInstance, queueMethods);
@@ -18,12 +18,12 @@ var queueMethods = {
     this.storage[objArray.length] = value;
   },
   dequeue: function(){
-  	var objArray = Object.keys(this.storage);
-    var result = this.storage['0'];
+    var result = this.storage['0'], storage = this.storage;
     delete this.storage['0'];
+    var objArray = Object.keys(this.storage);
     _.each(this.storage, function(value, key) {
       key = key - 1;
-      this.storage[key] = value;
+      storage[key] = value;
     })
     delete this.storage[objArray.length];
     return result;
