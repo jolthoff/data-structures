@@ -17,7 +17,7 @@ var Queue = function(){
     _.each(storage, function(value, key) {
       key = Number(key) - 1;
       storage[key] = value;
-    })
+    }) 
     delete storage[objArray.length]
     return result;
   };
