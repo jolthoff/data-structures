@@ -3,23 +3,26 @@ var Stack = function() {
   // but try not not reference your old code in writing the new style.
   var newStack = Object.create(stackMethods);
   newStack.storage = {};
+  newStack.length = 0;
   return newStack;
 
 };
 
 var stackMethods = {
 	push: function(value) {
-		var objArray = Object.keys(this.storage);
-		this.storage[objArray.length] = value;
+		this.storage[this.length] = value;
+		this.length++;
 	},
 	pop: function() {
-		var objArray = Object.keys(this.storage);
-		var result = this.storage[objArray.length - 1];
-		delete this.storage[objArray.length - 1];
+		var result = this.storage[this.length - 1];
+		delete this.storage[this.length - 1];
+		if (this.length !== 0) {
+			this.length--;
+		}
 		return result;
 	},
 	size: function() {
-		return Object.keys(this.storage).length;
+		return this.length;
 	}
 };
 

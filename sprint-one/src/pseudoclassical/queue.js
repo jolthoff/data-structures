@@ -2,10 +2,12 @@ var Queue = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
   this.storage = {};
+  this.length = 0;
 };
 
 Queue.prototype.enqueue = function(value) {
-	this.storage[Object.keys(this.storage).length] = value;
+	this.storage[this.length] = value;
+	this.length++;
 }
 
 Queue.prototype.dequeue = function() {
@@ -15,12 +17,15 @@ Queue.prototype.dequeue = function() {
 		key = key - 1;
 		storage[key] = value
 	})
-	delete this.storage[Object.keys(this.storage).length - 1]
+	delete this.storage[this.length - 1]
+	if (this.length !== 0) {
+		this.length--;
+	}
 	return result;
 }
 
 Queue.prototype.size = function() {
-	return Object.keys(this.storage).length;
+	return this.length;
 }
 
 var queue = new Queue();
