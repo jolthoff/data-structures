@@ -17,18 +17,18 @@ var stackMethods = {
       this.length++;
   	},
 
-  	pop: function(){
-	    var result = this.storage[this.length - 1];
-	    delete this.storage[this.length - 1];
-      if (this.length !== 0) {
-        this.length--;
-      }
-	    return result;
-  	},
+	pop: function(){
+    var result = this.storage[this.length - 1];
+    delete this.storage[this.length - 1];
+    if (this.length !== 0) {
+      this.length--;
+    }
+    return result;
+	},
 
-  	size: function(){
-	    return this.length;
-  	}
+	size: function(){
+    return this.length;
+	}
 };
 
 
