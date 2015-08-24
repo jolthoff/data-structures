@@ -1,26 +1,36 @@
 var Tree = function(value){
   var newTree = {};
   newTree.value = value;
-
-  // your code here
-  newTree.children = null;  // fix me
+  newTree.children = [];  
+  newTree.parent;
+  _.extend(newTree, treeMethods);
 
   return newTree;
 };
 
 
-  // your code here
-  newTree.children = null;  // fix me
+var treeMethods = {
 
+	addChild: function(value) {
+		var tree = Tree(value);
+		this.children.push(tree);
+		tree.parent = this;
+	},
 
-var treeMethods = {};
-
-treeMethods.addChild = function(value){
-
-};
-
-treeMethods.contains = function(target){
-
+	contains: function(target) {
+		var found;
+		function searcher(node) {
+			if (node.value === target) {
+				found = true;
+			} else {
+				_.each(node.children, function(node) {
+					searcher(node)
+				})
+			}
+		}
+		searcher(this);
+		return !!found;
+	}
 };
 
 
